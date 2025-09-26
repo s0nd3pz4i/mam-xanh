@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +47,32 @@
       padding: 2rem;
     }
 
+    .card {
+      transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+      border: 2px solid transparent;
+      /* default border */
+      border-radius: 16px;
+    }
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05); /* subtle lift & zoom */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  border: 2px solid #66bb6a; /* green highlight border */
+}/* Optional: flashcard inner hover glow */
+.card-inner:hover .card-front,
+.card-inner:hover .card-back {
+  box-shadow: 0 0 15px rgba(102, 187, 106, 0.7); /* soft green glow */
+}
+
+/* Make text pop on hover */
+.card-body p.card-text {
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+.card-body p.card-text:hover {
+  color: #2e7d32; /* darker green */
+  font-weight: bold;
+}
     .card-flip {
       perspective: 1000px;
       cursor: pointer;
@@ -66,15 +93,17 @@
     .card-front,
     .card-back {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 16px;
       backface-visibility: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
       overflow: hidden;
     }
 
@@ -83,7 +112,9 @@
     }
 
     .card-front img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .card-back {
@@ -101,8 +132,9 @@
     }
   </style>
 </head>
+
 <body>
-	  <!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container">
       <a class="navbar-brand" href="#">Eco Flashcards</a>
@@ -136,53 +168,609 @@
       and become everyday heroes. 🌱
     </p>
   </section>
-
-  <!-- Flashcards Grid -->
-  <section class="flashcards">
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="images/tree.jpg" alt="Plant a Tree">
-        </div>
-        <div class="card-back">
-          <p>🌳 Plant trees to clean the air and provide homes for animals.</p>
-        </div>
+  <!-- Land Animals -->
+  <h2>🐾 Động vật sống trên cạn (Land Animals)</h2>
+  <div class="container my-4">
+    <div class="row g-4">
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/tiger.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/tiger.png" class="card-img-top" alt="Tiger">
+            <div class="card-body text-center">
+              <p class="card-text">🐅 Hổ (Tiger)</p>
+            </div>
+          </div>
+        </a>
       </div>
-    </div>
-
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="images/recycle.jpg" alt="Recycle">
-        </div>
-        <div class="card-back">
-          <p>♻️ Recycling saves energy and keeps plastic out of the ocean.</p>
-        </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/lion.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/lion.png" class="card-img-top" alt="Lion">
+            <div class="card-body text-center">
+              <p class="card-text">🦁 Sư tử (Lion)</p>
+            </div>
+          </div>
+        </a>
       </div>
-    </div>
-
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="images/water.jpg" alt="Save Water">
-        </div>
-        <div class="card-back">
-          <p>💧 Save water by turning off taps when brushing your teeth.</p>
-        </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/brown-bear.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/brown-bear.png" class="card-img-top" alt="Brown Bear">
+            <div class="card-body text-center">
+              <p class="card-text">🐻 Gấu nâu (Brown Bear)</p>
+            </div>
+          </div>
+        </a>
       </div>
-    </div>
-
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="images/cleanup.jpg" alt="Beach Cleanup">
-        </div>
-        <div class="card-back">
-          <p>🧹 Join cleanup events to keep beaches and parks safe for wildlife.</p>
-        </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/capybara.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/capybara.png" class="card-img-top" alt="Capybara">
+            <div class="card-body text-center">
+              <p class="card-text">🐹 Chuột lang nước (Capybara)</p>
+            </div>
+          </div>
+        </a>
       </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/elephant.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/elephant.png" class="card-img-top" alt="Elephant">
+            <div class="card-body text-center">
+              <p class="card-text">🐘 Voi (Elephant)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/giraffe.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/giraffe.png" class="card-img-top" alt="Giraffe">
+            <div class="card-body text-center">
+              <p class="card-text">🦒 Hươu cao cổ (Giraffe)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/squirrel.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/squirrel.png" class="card-img-top" alt="Squirrel">
+            <div class="card-body text-center">
+              <p class="card-text">🐿️ Sóc (Squirrel)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- More Land Animals -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/horse.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/horse.png" class="card-img-top" alt="Horse">
+            <div class="card-body text-center">
+              <p class="card-text">🐎 Ngựa (Horse)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/panda.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/panda.png" class="card-img-top" alt="Panda">
+            <div class="card-body text-center">
+              <p class="card-text">🐼 Gấu trúc (Panda)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/wolf.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/wolf.png" class="card-img-top" alt="Wolf">
+            <div class="card-body text-center">
+              <p class="card-text">🐺 Sói (Wolf)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/raccoon.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/raccoon.png" class="card-img-top" alt="Raccoon">
+            <div class="card-body text-center">
+              <p class="card-text">🦝 Gấu mèo (Raccoon)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/rabbit.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/rabbit.png" class="card-img-top" alt="Rabbit">
+            <div class="card-body text-center">
+              <p class="card-text">🐇 Thỏ (Rabbit)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/porcupine.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/porcupine.png" class="card-img-top" alt="Porcupine">
+            <div class="card-body text-center">
+              <p class="card-text">🦔 Nhím (Porcupine)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/deer.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/deer.png" class="card-img-top" alt="Deer">
+            <div class="card-body text-center">
+              <p class="card-text">🦌 Nai (Deer)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/buffalo.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/buffalo.png" class="card-img-top" alt="Buffalo">
+            <div class="card-body text-center">
+              <p class="card-text">🐃 Trâu (Buffalo)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/weasel.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/weasal.png" class="card-img-top" alt="Weasel">
+            <div class="card-body text-center">
+              <p class="card-text">🦡 Chồn (Weasel)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/goat.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/goat.png" class="card-img-top" alt="Goat">
+            <div class="card-body text-center">
+              <p class="card-text">🐐 Dê (Goat)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/fox.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/fox.png" class="card-img-top" alt="Fox">
+            <div class="card-body text-center">
+              <p class="card-text">🦊 Cáo (Fox)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/camel.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/camel.png" class="card-img-top" alt="Camel">
+            <div class="card-body text-center">
+              <p class="card-text">🐫 Lạc đà (Camel)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/monkey.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/land/monkey.png" class="card-img-top" alt="Monkey">
+            <div class="card-body text-center">
+              <p class="card-text">🐒 Khỉ (Monkey)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- keep adding other land animals here -->
     </div>
-  </section>
+  </div>
+
+  <!-- Water Animals -->
+  <!-- Water Animals -->
+  <h2>🌊 Water Animals (Động vật sống dưới nước)</h2>
+  <div class="container my-4">
+    <div class="row g-4">
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/dolphin.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/dolphin.png" class="card-img-top" alt="Dolphin">
+            <div class="card-body text-center">
+              <p class="card-text">🐬 Cá heo (Dolphin)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/blue-whale.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/blue-whale.png" class="card-img-top" alt="Blue Whale">
+            <div class="card-body text-center">
+              <p class="card-text">🐋 Cá voi xanh (Blue Whale)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/shark.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/shark.png" class="card-img-top" alt="Shark">
+            <div class="card-body text-center">
+              <p class="card-text">🦈 Cá mập (Shark)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/sea-turtle.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/fbiz.png" class="card-img-top" alt="Sea Turtle">
+            <div class="card-body text-center">
+              <p class="card-text">🐢 Rùa biển (Sea Turtle)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/jellyfish.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/jellyfish.png" class="card-img-top" alt="Jellyfish">
+            <div class="card-body text-center">
+              <p class="card-text">🌐 Sứa (Jellyfish)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/seal.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/seal.png" class="card-img-top" alt="Seal">
+            <div class="card-body text-center">
+              <p class="card-text">🦭 Hải cẩu (Seal)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/seahorse.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/seahorse.png" class="card-img-top" alt="Seahorse">
+            <div class="card-body text-center">
+              <p class="card-text">🐠 Cá ngựa (Seahorse)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/starfish.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/starfish.png" class="card-img-top" alt="Starfish">
+            <div class="card-body text-center">
+              <p class="card-text">⭐ Sao biển (Starfish)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/crab.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/crab.png" class="card-img-top" alt="Crab">
+            <div class="card-body text-center">
+              <p class="card-text">🦀 Cua (Crab)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/shrimp.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/shrimp.png" class="card-img-top" alt="Shrimp">
+            <div class="card-body text-center">
+              <p class="card-text">🦐 Tôm (Shrimp)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/moray-eel.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/moray-eel.png" class="card-img-top" alt="Moray Eel">
+            <div class="card-body text-center">
+              <p class="card-text">🐍 Lươn biển (Moray Eel)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/octopus.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/octopus.png" class="card-img-top" alt="Octopus">
+            <div class="card-body text-center">
+              <p class="card-text">🐙 Bạch tuộc (Octopus)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/sea-urchin.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/sea-urchin.png" class="card-img-top" alt="Sea Urchin">
+            <div class="card-body text-center">
+              <p class="card-text">🌑 Cầu gai (Sea Urchin)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/clownfish.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/clownfish.png" class="card-img-top" alt="Clownfish">
+            <div class="card-body text-center">
+              <p class="card-text">🎭 Cá hề (Clownfish)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/orca.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/orca.png" class="card-img-top" alt="Orca">
+            <div class="card-body text-center">
+              <p class="card-text">🐳 Cá voi sát thủ (Orca)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/coral.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/coral.png" class="card-img-top" alt="Coral">
+            <div class="card-body text-center">
+              <p class="card-text">🪸 San hô (Coral)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/otter.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/otter.png" class="card-img-top" alt="Otter">
+            <div class="card-body text-center">
+              <p class="card-text">🦦 Rái cá (Otter)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/stingray.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/stingray.png" class="card-img-top" alt="Stingray">
+            <div class="card-body text-center">
+              <p class="card-text">🌊 Cá đuối (Stingray)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/clam.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/clam.png" class="card-img-top" alt="Clam">
+            <div class="card-body text-center">
+              <p class="card-text">🐚 Ốc sò (Clam)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/frog.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/water/frog.png" class="card-img-top" alt="Frog">
+            <div class="card-body text-center">
+              <p class="card-text">🐸 Ếch (Frog)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Flying Animals -->
+  <h2>🕊️ Flying Animals (Động vật sống trên trời)</h2>
+  <div class="container my-4">
+    <div class="row g-4">
+
+      <!-- Owl -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/owl.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/owl.png" class="card-img-top" alt="Owl">
+            <div class="card-body text-center">
+              <p class="card-text">🦉 Cú mèo (Owl)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Parrot -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/parrot.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/parrot.png" class="card-img-top" alt="Parrot">
+            <div class="card-body text-center">
+              <p class="card-text">🦜 Vẹt (Parrot)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Eagle -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/eagle.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/eagle.png" class="card-img-top" alt="Eagle">
+            <div class="card-body text-center">
+              <p class="card-text">🦅 Đại bàng (Eagle)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Pigeon -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/pigeon.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/pigeon.png" class="card-img-top" alt="Pigeon">
+            <div class="card-body text-center">
+              <p class="card-text">🕊️ Bồ câu (Pigeon)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Crow -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/crow.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/crow.png" class="card-img-top" alt="Crow">
+            <div class="card-body text-center">
+              <p class="card-text">🐦‍⬛ Quạ (Crow)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sparrow -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/sparrow.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/sparrow.png" class="card-img-top" alt="Sparrow">
+            <div class="card-body text-center">
+              <p class="card-text">🐦 Chim sẻ (Sparrow)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bee -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/bee.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/bee.png" class="card-img-top" alt="Bee">
+            <div class="card-body text-center">
+              <p class="card-text">🐝 Ong mật (Bee)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Butterfly -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/butterfly.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/butterfly.png" class="card-img-top" alt="Butterfly">
+            <div class="card-body text-center">
+              <p class="card-text">🦋 Bướm (Butterfly)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Dragonfly -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/dragonfly.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/dragonfly.png" class="card-img-top" alt="Dragonfly">
+            <div class="card-body text-center">
+              <p class="card-text">🐉 Chuồn chuồn (Dragonfly)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Stork -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/stork.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/stork.png" class="card-img-top" alt="Stork">
+            <div class="card-body text-center">
+              <p class="card-text">🪶 Cò (Stork)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Seagull -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/seagull.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/seagull.png" class="card-img-top" alt="Seagull">
+            <div class="card-body text-center">
+              <p class="card-text">🌊 Hải âu (Seagull)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bat -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <a href="card/bat.html" class="text-decoration-none">
+          <div class="card h-100">
+            <img src="images/fly/bat.png" class="card-img-top" alt="Bat">
+            <div class="card-body text-center">
+              <p class="card-text">🦇 Dơi (Bat)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- Footer -->
   <footer>
@@ -224,4 +812,5 @@
     });
   </script>
 </body>
+
 </html>

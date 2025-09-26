@@ -1,0 +1,99 @@
+/* General Page Setup */
+body {
+  background-color: #f3fff3;
+  font-family: "Comic Sans MS", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background: #2e7d32;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Animal Card */
+.animal-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+.animal-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.animal-info {
+  padding: 1.5rem;
+}
+.animal-info h2 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.animal-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Fun Fact Box */
+.fun-fact {
+  background: #e8f5e9;
+  border-left: 6px solid #2e7d32;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 12px;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+  .animal-card img {
+    height: 200px;
+  }
+  .animal-info h2 {
+    font-size: 1.4rem;
+  }
+  .animal-info p {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+  .animal-card {
+    margin: 1rem;
+  }
+  .animal-card img {
+    height: 180px;
+  }
+  .animal-info {
+    padding: 1rem;
+  }
+  .animal-info h2 {
+    font-size: 1.2rem;
+  }
+}
