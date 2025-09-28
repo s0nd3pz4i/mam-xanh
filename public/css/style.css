@@ -30,10 +30,12 @@ header h1 {
   overflow: hidden;
 }
 .animal-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+  width: 60%;
+  height: auto; /* keep aspect ratio */
+  display: block; /* make it block so margin auto works */
+  margin: 0 auto; /* centers horizontally */
 }
+
 .animal-info {
   padding: 1.5rem;
 }

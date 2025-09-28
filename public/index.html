@@ -10,7 +10,7 @@
   <style>
     body {
       background-color: #eafbea;
-      font-family: "Comic Sans MS", sans-serif;
+      font-family: 'Quicksand', sans-serif;
     }
 
     header {
@@ -54,25 +54,31 @@
       border-radius: 16px;
     }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.05); /* subtle lift & zoom */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-  border: 2px solid #66bb6a; /* green highlight border */
-}/* Optional: flashcard inner hover glow */
-.card-inner:hover .card-front,
-.card-inner:hover .card-back {
-  box-shadow: 0 0 15px rgba(102, 187, 106, 0.7); /* soft green glow */
-}
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      /* subtle lift & zoom */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+      border: 2px solid #66bb6a;
+      /* green highlight border */
+    }
 
-/* Make text pop on hover */
-.card-body p.card-text {
-  transition: color 0.3s, font-weight 0.3s;
-}
+    /* Optional: flashcard inner hover glow */
+    .card-inner:hover .card-front,
+    .card-inner:hover .card-back {
+      box-shadow: 0 0 15px rgba(102, 187, 106, 0.7);
+      /* soft green glow */
+    }
 
-.card-body p.card-text:hover {
-  color: #2e7d32; /* darker green */
-  font-weight: bold;
-}
+    /* Make text pop on hover */
+    .card-body p.card-text {
+      transition: color 0.3s, font-weight 0.3s;
+    }
+
+    .card:hover .card-body p.card-text {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
     .card-flip {
       perspective: 1000px;
       cursor: pointer;
@@ -135,22 +141,25 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-    <div class="container">
-      <a class="navbar-brand" href="#">Eco Flashcards</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#details">Details</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="images/mam-xanh.png" alt="Mầm Xanh Logo" style="height: 50px; width: auto;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#details">Details</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
   <!-- Header -->
   <!-- <header>
     <h1>🌍 Eco Flashcards</h1>
@@ -162,19 +171,48 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h2>Learn While You Play!</h2>
+    <h2>Học Vui Khám Phá!</h2>
     <p>
-      With Eco Flashcards, kids can flip cards, discover easy ways to protect the environment,
-      and become everyday heroes. 🌱
+      Với Mầm Xanh, các bé có thể lật thẻ, tìm hiểu cách bảo vệ môi trường đơn giản,
+      và cùng nhau chăm sóc Trái Đất. 🌱
     </p>
+
   </section>
-  <!-- Land Animals -->
-  <h2>🐾 Động vật sống trên cạn (Land Animals)</h2>
   <div class="container my-4">
+    <input type="text" id="cardSearch" class="form-control" placeholder="Search for an animal...">
+  </div>
+  <script>
+    const searchInput = document.getElementById('cardSearch');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+
+      document.querySelectorAll('.card').forEach(card => {
+        const text = [
+          card.dataset.commonName,
+          card.dataset.scientificName,
+          card.dataset.type,
+          card.dataset.diet
+        ].join(' ').toLowerCase();
+
+        if (text.includes(query)) {
+          card.closest('.col-6').style.display = '';
+        } else {
+          card.closest('.col-6').style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- Land Animals -->
+  <div class="container my-4">
+    <h2>🐾 Động vật sống trên cạn (Land Animals)</h2>
     <div class="row g-4">
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/tiger.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Hổ" data-scientific-name="Panthera tigris"
+            data-type="Động vật có vú" data-diet="Động vật ăn thịt" data-habitat="Rừng nhiệt đới" data-location="Châu Á"
+            data-size="2.5-3.3 m" data-weight="100-300 kg" data-img="images/land/tiger.png">
             <img src="images/land/tiger.png" class="card-img-top" alt="Tiger">
             <div class="card-body text-center">
               <p class="card-text">🐅 Hổ (Tiger)</p>
@@ -184,7 +222,9 @@
       </div>
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/lion.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Sư tử" data-scientific-name="Panthera leo"
+            data-type="Động vật có vú" data-diet="Động vật ăn thịt" data-habitat="Trảng cỏ" data-location="Châu Phi"
+            data-size="1.5-2.5 m" data-weight="120-250 kg" data-img="images/land/lion.png">
             <img src="images/land/lion.png" class="card-img-top" alt="Lion">
             <div class="card-body text-center">
               <p class="card-text">🦁 Sư tử (Lion)</p>
@@ -194,7 +234,10 @@
       </div>
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/brown-bear.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Gấu nâu" data-scientific-name="Ursus arctos"
+            data-type="Động vật có vú" data-diet="Động vật ăn thịt/ăn tạp" data-habitat="Rừng, núi"
+            data-location="Bắc Mỹ, châu Âu, châu Á" data-size="1.7-2.8 m" data-weight="80-600 kg"
+            data-img="images/land/brown-bear.png">
             <img src="images/land/brown-bear.png" class="card-img-top" alt="Brown Bear">
             <div class="card-body text-center">
               <p class="card-text">🐻 Gấu nâu (Brown Bear)</p>
@@ -202,9 +245,12 @@
           </div>
         </a>
       </div>
+
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/capybara.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Chuột lang nước" data-scientific-name="Hydrochoerus hydrochaeris"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ ven sông" data-location="Nam Mỹ"
+            data-size="1.0-1.3 m" data-weight="35-66 kg" data-img="images/land/capybara.png">
             <img src="images/land/capybara.png" class="card-img-top" alt="Capybara">
             <div class="card-body text-center">
               <p class="card-text">🐹 Chuột lang nước (Capybara)</p>
@@ -212,9 +258,12 @@
           </div>
         </a>
       </div>
+
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/elephant.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Voi" data-scientific-name="Loxodonta africana"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Savanna, rừng" data-location="Châu Phi"
+            data-size="2.5-4 m" data-weight="2,000-6,000 kg" data-img="images/land/elephant.png">
             <img src="images/land/elephant.png" class="card-img-top" alt="Elephant">
             <div class="card-body text-center">
               <p class="card-text">🐘 Voi (Elephant)</p>
@@ -222,9 +271,12 @@
           </div>
         </a>
       </div>
+
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/giraffe.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Hươu cao cổ" data-scientific-name="Giraffa camelopardalis"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ rộng" data-location="Châu Phi"
+            data-size="4.5-6 m" data-weight="800-1,200 kg" data-img="images/land/giraffe.png">
             <img src="images/land/giraffe.png" class="card-img-top" alt="Giraffe">
             <div class="card-body text-center">
               <p class="card-text">🦒 Hươu cao cổ (Giraffe)</p>
@@ -234,7 +286,9 @@
       </div>
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/squirrel.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Sóc" data-scientific-name="Sciuridae" data-type="Động vật có vú"
+            data-diet="Hạt, quả, thực vật" data-habitat="Rừng, công viên" data-location="Toàn thế giới"
+            data-size="0.2-0.5 m" data-weight="0.3-1 kg" data-img="images/land/squirrel.png">
             <img src="images/land/squirrel.png" class="card-img-top" alt="Squirrel">
             <div class="card-body text-center">
               <p class="card-text">🐿️ Sóc (Squirrel)</p>
@@ -242,10 +296,13 @@
           </div>
         </a>
       </div>
-      <!-- More Land Animals -->
+
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/horse.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Ngựa" data-scientific-name="Equus ferus caballus"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ, trang trại"
+            data-location="Toàn thế giới" data-size="1.4-1.8 m" data-weight="380-1,000 kg"
+            data-img="images/land/horse.png">
             <img src="images/land/horse.png" class="card-img-top" alt="Horse">
             <div class="card-body text-center">
               <p class="card-text">🐎 Ngựa (Horse)</p>
@@ -256,7 +313,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/panda.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Gấu trúc" data-scientific-name="Ailuropoda melanoleuca"
+            data-type="Động vật có vú" data-diet="Thực vật (tre)" data-habitat="Rừng tre" data-location="Trung Quốc"
+            data-size="1.2-1.9 m" data-weight="70-160 kg" data-img="images/land/panda.png">
             <img src="images/land/panda.png" class="card-img-top" alt="Panda">
             <div class="card-body text-center">
               <p class="card-text">🐼 Gấu trúc (Panda)</p>
@@ -267,7 +326,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/wolf.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Sói" data-scientific-name="Canis lupus" data-type="Động vật có vú"
+            data-diet="Động vật ăn thịt" data-habitat="Rừng, đồng cỏ" data-location="Bắc Mỹ, châu Âu, châu Á"
+            data-size="1-1.6 m" data-weight="30-80 kg" data-img="images/land/wolf.png">
             <img src="images/land/wolf.png" class="card-img-top" alt="Wolf">
             <div class="card-body text-center">
               <p class="card-text">🐺 Sói (Wolf)</p>
@@ -278,7 +339,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/raccoon.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Gấu mèo" data-scientific-name="Procyon lotor"
+            data-type="Động vật có vú" data-diet="Tạp ăn" data-habitat="Rừng, khu dân cư" data-location="Bắc Mỹ"
+            data-size="0.4-0.7 m" data-weight="4-9 kg" data-img="images/land/raccoon.png">
             <img src="images/land/raccoon.png" class="card-img-top" alt="Raccoon">
             <div class="card-body text-center">
               <p class="card-text">🦝 Gấu mèo (Raccoon)</p>
@@ -289,7 +352,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/rabbit.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Thỏ" data-scientific-name="Oryctolagus cuniculus"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ, rừng" data-location="Châu Âu, Bắc Mỹ"
+            data-size="0.2-0.5 m" data-weight="1-2 kg" data-img="images/land/rabbit.png">
             <img src="images/land/rabbit.png" class="card-img-top" alt="Rabbit">
             <div class="card-body text-center">
               <p class="card-text">🐇 Thỏ (Rabbit)</p>
@@ -300,7 +365,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/porcupine.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Nhím" data-scientific-name="Hystricidae" data-type="Động vật có vú"
+            data-diet="Thực vật" data-habitat="Rừng, đồng cỏ" data-location="Toàn thế giới" data-size="0.6-1 m"
+            data-weight="5-18 kg" data-img="images/land/porcupine.png">
             <img src="images/land/porcupine.png" class="card-img-top" alt="Porcupine">
             <div class="card-body text-center">
               <p class="card-text">🦔 Nhím (Porcupine)</p>
@@ -311,7 +378,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/deer.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Nai" data-scientific-name="Cervidae" data-type="Động vật có vú"
+            data-diet="Thực vật" data-habitat="Rừng, đồng cỏ" data-location="Toàn thế giới" data-size="1-2 m"
+            data-weight="30-300 kg" data-img="images/land/deer.png">
             <img src="images/land/deer.png" class="card-img-top" alt="Deer">
             <div class="card-body text-center">
               <p class="card-text">🦌 Nai (Deer)</p>
@@ -322,7 +391,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/buffalo.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Trâu" data-scientific-name="Bubalus bubalis"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ, đầm lầy" data-location="Châu Á"
+            data-size="2-3 m" data-weight="400-1,000 kg" data-img="images/land/buffalo.png">
             <img src="images/land/buffalo.png" class="card-img-top" alt="Buffalo">
             <div class="card-body text-center">
               <p class="card-text">🐃 Trâu (Buffalo)</p>
@@ -333,7 +404,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/weasel.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Chồn" data-scientific-name="Mustela" data-type="Động vật có vú"
+            data-diet="Động vật ăn thịt" data-habitat="Rừng, đồng cỏ" data-location="Toàn thế giới"
+            data-size="0.2-0.4 m" data-weight="0.1-1 kg" data-img="images/land/weasal.png">
             <img src="images/land/weasal.png" class="card-img-top" alt="Weasel">
             <div class="card-body text-center">
               <p class="card-text">🦡 Chồn (Weasel)</p>
@@ -344,7 +417,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/goat.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Dê" data-scientific-name="Capra aegagrus hircus"
+            data-type="Động vật có vú" data-diet="Thực vật" data-habitat="Đồng cỏ, núi" data-location="Toàn thế giới"
+            data-size="0.7-1 m" data-weight="45-140 kg" data-img="images/land/goat.png">
             <img src="images/land/goat.png" class="card-img-top" alt="Goat">
             <div class="card-body text-center">
               <p class="card-text">🐐 Dê (Goat)</p>
@@ -355,7 +430,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/fox.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cáo" data-scientific-name="Vulpes vulpes" data-type="Động vật có vú"
+            data-diet="Động vật ăn thịt" data-habitat="Rừng, đồng cỏ" data-location="Bắc bán cầu" data-size="0.5-0.9 m"
+            data-weight="3-14 kg" data-img="images/land/fox.png">
             <img src="images/land/fox.png" class="card-img-top" alt="Fox">
             <div class="card-body text-center">
               <p class="card-text">🦊 Cáo (Fox)</p>
@@ -363,10 +440,11 @@
           </div>
         </a>
       </div>
-
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/camel.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Lạc đà" data-scientific-name="Camelus" data-type="Động vật có vú"
+            data-diet="Thực vật" data-habitat="Sa mạc, bán hoang mạc" data-location="Châu Á, Châu Phi"
+            data-size="1.8-2.3 m" data-weight="300-600 kg" data-img="images/land/camel.png">
             <img src="images/land/camel.png" class="card-img-top" alt="Camel">
             <div class="card-body text-center">
               <p class="card-text">🐫 Lạc đà (Camel)</p>
@@ -377,7 +455,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/monkey.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Khỉ" data-scientific-name="Cercopithecidae"
+            data-type="Động vật có vú" data-diet="Đa dạng (trái cây, lá, côn trùng)"
+            data-habitat="Rừng, rừng nhiệt đới, đồng cỏ" data-location="Châu Phi, Châu Á, Nam Mỹ" data-size="0.3-0.9 m"
+            data-weight="3-35 kg" data-img="images/land/monkey.png">
             <img src="images/land/monkey.png" class="card-img-top" alt="Monkey">
             <div class="card-body text-center">
               <p class="card-text">🐒 Khỉ (Monkey)</p>
@@ -385,20 +466,17 @@
           </div>
         </a>
       </div>
-
-      <!-- keep adding other land animals here -->
     </div>
   </div>
-
   <!-- Water Animals -->
-  <!-- Water Animals -->
-  <h2>🌊 Water Animals (Động vật sống dưới nước)</h2>
   <div class="container my-4">
+    <h2>🌊 Water Animals (Động vật sống dưới nước)</h2>
     <div class="row g-4">
-
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/dolphin.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá heo" data-scientific-name="Delphinidae"
+            data-type="Động vật có vú" data-diet="Cá, mực" data-habitat="Đại dương, biển" data-location="Toàn cầu"
+            data-size="2-4 m" data-weight="150-650 kg" data-img="images/water/dolphin.png">
             <img src="images/water/dolphin.png" class="card-img-top" alt="Dolphin">
             <div class="card-body text-center">
               <p class="card-text">🐬 Cá heo (Dolphin)</p>
@@ -409,7 +487,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/blue-whale.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá voi xanh" data-scientific-name="Balaenoptera musculus"
+            data-type="Động vật có vú" data-diet="Sinh vật phù du, cá nhỏ" data-habitat="Đại dương"
+            data-location="Toàn cầu" data-size="24-30 m" data-weight="100,000-150,000 kg"
+            data-img="images/water/blue-whale.png">
             <img src="images/water/blue-whale.png" class="card-img-top" alt="Blue Whale">
             <div class="card-body text-center">
               <p class="card-text">🐋 Cá voi xanh (Blue Whale)</p>
@@ -420,7 +501,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/shark.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá mập" data-scientific-name="Selachimorpha"
+            data-type="Động vật có xương sống" data-diet="Cá, mực, động vật biển khác" data-habitat="Đại dương, biển"
+            data-location="Toàn cầu" data-size="1.5-6 m" data-weight="20-1,100 kg" data-img="images/water/shark.png">
             <img src="images/water/shark.png" class="card-img-top" alt="Shark">
             <div class="card-body text-center">
               <p class="card-text">🦈 Cá mập (Shark)</p>
@@ -431,7 +514,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/sea-turtle.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Rùa biển" data-scientific-name="Cheloniidae"
+            data-type="Động vật có xương sống" data-diet="Cỏ biển, tảo, động vật nhỏ" data-habitat="Biển, rạn san hô"
+            data-location="Các đại dương nhiệt đới và cận nhiệt đới" data-size="0.7-1.5 m" data-weight="80-200 kg"
+            data-img="images/water/fbiz.png">
             <img src="images/water/fbiz.png" class="card-img-top" alt="Sea Turtle">
             <div class="card-body text-center">
               <p class="card-text">🐢 Rùa biển (Sea Turtle)</p>
@@ -439,10 +525,12 @@
           </div>
         </a>
       </div>
-
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/jellyfish.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Sứa" data-scientific-name="Scyphozoa"
+            data-type="Động vật không xương sống" data-diet="Sinh vật phù du" data-habitat="Đại dương"
+            data-location="Toàn cầu" data-size="0.2-2 m" data-weight="Không đáng kể"
+            data-img="images/water/jellyfish.png">
             <img src="images/water/jellyfish.png" class="card-img-top" alt="Jellyfish">
             <div class="card-body text-center">
               <p class="card-text">🌐 Sứa (Jellyfish)</p>
@@ -453,7 +541,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/seal.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Hải cẩu" data-scientific-name="Pinnipedia"
+            data-type="Động vật có vú" data-diet="Cá, mực" data-habitat="Biển, bờ đá"
+            data-location="Các đại dương Bắc bán cầu và Nam bán cầu" data-size="1.2-2.5 m" data-weight="45-300 kg"
+            data-img="images/water/seal.png">
             <img src="images/water/seal.png" class="card-img-top" alt="Seal">
             <div class="card-body text-center">
               <p class="card-text">🦭 Hải cẩu (Seal)</p>
@@ -464,7 +555,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/seahorse.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá ngựa" data-scientific-name="Hippocampus"
+            data-type="Động vật có xương sống" data-diet="Sinh vật phù du" data-habitat="Rạn san hô, cỏ biển"
+            data-location="Các đại dương nhiệt đới và cận nhiệt đới" data-size="0.6-35 cm" data-weight="10-150 g"
+            data-img="images/water/seahorse.png">
             <img src="images/water/seahorse.png" class="card-img-top" alt="Seahorse">
             <div class="card-body text-center">
               <p class="card-text">🐠 Cá ngựa (Seahorse)</p>
@@ -475,7 +569,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/starfish.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Sao biển" data-scientific-name="Asteroidea"
+            data-type="Động vật không xương sống" data-diet="Sinh vật nhỏ, động vật phù du"
+            data-habitat="Rạn san hô, đáy biển" data-location="Các đại dương toàn cầu" data-size="10-50 cm"
+            data-weight="50-1,000 g" data-img="images/water/starfish.png">
             <img src="images/water/starfish.png" class="card-img-top" alt="Starfish">
             <div class="card-body text-center">
               <p class="card-text">⭐ Sao biển (Starfish)</p>
@@ -486,7 +583,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/crab.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cua" data-scientific-name="Brachyura"
+            data-type="Động vật không xương sống" data-diet="Động vật nhỏ, tảo" data-habitat="Bờ biển, đáy biển"
+            data-location="Các đại dương toàn cầu" data-size="3-40 cm" data-weight="50-500 g"
+            data-img="images/water/crab.png">
             <img src="images/water/crab.png" class="card-img-top" alt="Crab">
             <div class="card-body text-center">
               <p class="card-text">🦀 Cua (Crab)</p>
@@ -497,7 +597,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/shrimp.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Tôm" data-scientific-name="Caridea"
+            data-type="Động vật không xương sống" data-diet="Động vật nhỏ, tảo" data-habitat="Nước mặn, nước ngọt"
+            data-location="Các đại dương và sông hồ toàn cầu" data-size="2-30 cm" data-weight="1-50 g"
+            data-img="images/water/shrimp.png">
             <img src="images/water/shrimp.png" class="card-img-top" alt="Shrimp">
             <div class="card-body text-center">
               <p class="card-text">🦐 Tôm (Shrimp)</p>
@@ -508,7 +611,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/moray-eel.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Lươn biển" data-scientific-name="Muraenidae"
+            data-type="Động vật có xương sống" data-diet="Cá, mực" data-habitat="Rạn san hô, hang đá"
+            data-location="Các đại dương nhiệt đới" data-size="0.5-4 m" data-weight="1-30 kg"
+            data-img="images/water/moray-eel.png">
             <img src="images/water/moray-eel.png" class="card-img-top" alt="Moray Eel">
             <div class="card-body text-center">
               <p class="card-text">🐍 Lươn biển (Moray Eel)</p>
@@ -519,7 +625,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/octopus.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Bạch tuộc" data-scientific-name="Octopus"
+            data-type="Động vật không xương sống" data-diet="Cá, cua, tôm" data-habitat="Rạn san hô, đáy biển"
+            data-location="Các đại dương toàn cầu" data-size="0.1-3 m" data-weight="0.5-50 kg"
+            data-img="images/water/octopus.png">
             <img src="images/water/octopus.png" class="card-img-top" alt="Octopus">
             <div class="card-body text-center">
               <p class="card-text">🐙 Bạch tuộc (Octopus)</p>
@@ -530,7 +639,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/sea-urchin.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cầu gai" data-scientific-name="Echinoidea"
+            data-type="Động vật không xương sống" data-diet="Tảo, sinh vật nhỏ" data-habitat="Đáy biển, rạn san hô"
+            data-location="Các đại dương toàn cầu" data-size="3-10 cm" data-weight="10-100 g"
+            data-img="images/water/sea-urchin.png">
             <img src="images/water/sea-urchin.png" class="card-img-top" alt="Sea Urchin">
             <div class="card-body text-center">
               <p class="card-text">🌑 Cầu gai (Sea Urchin)</p>
@@ -541,7 +653,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/clownfish.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá hề" data-scientific-name="Amphiprioninae"
+            data-type="Động vật có xương sống" data-diet="Tảo, động vật phù du" data-habitat="Rạn san hô"
+            data-location="Ấn Độ Dương và Thái Bình Dương" data-size="7-11 cm" data-weight="0.1-0.2 kg"
+            data-img="images/water/clownfish.png">
             <img src="images/water/clownfish.png" class="card-img-top" alt="Clownfish">
             <div class="card-body text-center">
               <p class="card-text">🎭 Cá hề (Clownfish)</p>
@@ -552,7 +667,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/orca.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá voi sát thủ" data-scientific-name="Orcinus orca"
+            data-type="Động vật có vú" data-diet="Cá, hải cẩu, chim biển" data-habitat="Đại dương"
+            data-location="Các đại dương toàn cầu" data-size="5-9 m" data-weight="3,600-10,000 kg"
+            data-img="images/water/orca.png">
             <img src="images/water/orca.png" class="card-img-top" alt="Orca">
             <div class="card-body text-center">
               <p class="card-text">🐳 Cá voi sát thủ (Orca)</p>
@@ -563,7 +681,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/coral.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="San hô" data-scientific-name="Anthozoa"
+            data-type="Động vật không xương sống" data-diet="Sinh vật phù du" data-habitat="Rạn san hô"
+            data-location="Các đại dương nhiệt đới" data-size="5-200 cm" data-weight="1-500 kg"
+            data-img="images/water/coral.png">
             <img src="images/water/coral.png" class="card-img-top" alt="Coral">
             <div class="card-body text-center">
               <p class="card-text">🪸 San hô (Coral)</p>
@@ -574,7 +695,9 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/otter.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Rái cá" data-scientific-name="Lutrinae" data-type="Động vật có vú"
+            data-diet="Cá, động vật giáp xác" data-habitat="Sông, bờ biển" data-location="Các đại dương Bắc bán cầu"
+            data-size="0.6-1.5 m" data-weight="5-45 kg" data-img="images/water/otter.png">
             <img src="images/water/otter.png" class="card-img-top" alt="Otter">
             <div class="card-body text-center">
               <p class="card-text">🦦 Rái cá (Otter)</p>
@@ -585,7 +708,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/stingray.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cá đuối" data-scientific-name="Dasyatidae"
+            data-type="Động vật có xương sống" data-diet="Động vật đáy, tôm, cua" data-habitat="Đáy biển, cửa sông"
+            data-location="Các đại dương nhiệt đới" data-size="0.3-7 m" data-weight="2-1,350 kg"
+            data-img="images/water/stingray.png">
             <img src="images/water/stingray.png" class="card-img-top" alt="Stingray">
             <div class="card-body text-center">
               <p class="card-text">🌊 Cá đuối (Stingray)</p>
@@ -596,7 +722,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/clam.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Ốc sò" data-scientific-name="Bivalvia"
+            data-type="Động vật không xương sống" data-diet="Phytoplankton" data-habitat="Đáy biển, cửa sông"
+            data-location="Các đại dương và sông hồ toàn cầu" data-size="2-30 cm" data-weight="10-500 g"
+            data-img="images/water/clam.png">
             <img src="images/water/clam.png" class="card-img-top" alt="Clam">
             <div class="card-body text-center">
               <p class="card-text">🐚 Ốc sò (Clam)</p>
@@ -607,7 +736,10 @@
 
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/frog.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Ếch" data-scientific-name="Anura" data-type="Động vật có xương sống"
+            data-diet="Côn trùng, thực vật nhỏ" data-habitat="Ao, hồ, đầm lầy"
+            data-location="Các vùng đất ngập nước toàn cầu" data-size="2-30 cm" data-weight="10-500 g"
+            data-img="images/water/frog.png">
             <img src="images/water/frog.png" class="card-img-top" alt="Frog">
             <div class="card-body text-center">
               <p class="card-text">🐸 Ếch (Frog)</p>
@@ -615,19 +747,19 @@
           </div>
         </a>
       </div>
-
     </div>
   </div>
-
   <!-- Flying Animals -->
-  <h2>🕊️ Flying Animals (Động vật sống trên trời)</h2>
   <div class="container my-4">
+    <h2>🕊️ Flying Animals (Động vật sống trên trời)</h2>
     <div class="row g-4">
-
       <!-- Owl -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/owl.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cú mèo" data-scientific-name="Strigiformes"
+            data-type="Động vật có xương sống" data-diet="Chuột, côn trùng" data-habitat="Rừng, đồng cỏ"
+            data-location="Các vùng trên toàn thế giới" data-size="40-70 cm" data-weight="0.2-4 kg"
+            data-img="images/fly/owl.png">
             <img src="images/fly/owl.png" class="card-img-top" alt="Owl">
             <div class="card-body text-center">
               <p class="card-text">🦉 Cú mèo (Owl)</p>
@@ -639,7 +771,10 @@
       <!-- Parrot -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/parrot.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Vẹt" data-scientific-name="Psittaciformes"
+            data-type="Động vật có xương sống" data-diet="Hạt, trái cây" data-habitat="Rừng, vườn cây"
+            data-location="Các vùng nhiệt đới" data-size="10-100 cm" data-weight="0.03-1 kg"
+            data-img="images/fly/parrot.png">
             <img src="images/fly/parrot.png" class="card-img-top" alt="Parrot">
             <div class="card-body text-center">
               <p class="card-text">🦜 Vẹt (Parrot)</p>
@@ -651,7 +786,9 @@
       <!-- Eagle -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/eagle.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Đại bàng" data-scientific-name="Accipitridae"
+            data-type="Động vật có xương sống" data-diet="Thịt, cá" data-habitat="Rừng, núi" data-location="Toàn cầu"
+            data-size="0.7-1 m" data-weight="3-7 kg" data-img="images/fly/eagle.png">
             <img src="images/fly/eagle.png" class="card-img-top" alt="Eagle">
             <div class="card-body text-center">
               <p class="card-text">🦅 Đại bàng (Eagle)</p>
@@ -663,7 +800,9 @@
       <!-- Pigeon -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/pigeon.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Bồ câu" data-scientific-name="Columba livia"
+            data-type="Động vật có xương sống" data-diet="Hạt, trái cây" data-habitat="Thành phố, rừng"
+            data-location="Toàn cầu" data-size="30-35 cm" data-weight="0.2-0.4 kg" data-img="images/fly/pigeon.png">
             <img src="images/fly/pigeon.png" class="card-img-top" alt="Pigeon">
             <div class="card-body text-center">
               <p class="card-text">🕊️ Bồ câu (Pigeon)</p>
@@ -675,7 +814,9 @@
       <!-- Crow -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/crow.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Quạ" data-scientific-name="Corvus"
+            data-type="Động vật có xương sống" data-diet="Côn trùng, thực phẩm thối" data-habitat="Rừng, đồng cỏ"
+            data-location="Toàn cầu" data-size="40-70 cm" data-weight="0.3-1.5 kg" data-img="images/fly/crow.png">
             <img src="images/fly/crow.png" class="card-img-top" alt="Crow">
             <div class="card-body text-center">
               <p class="card-text">🐦‍⬛ Quạ (Crow)</p>
@@ -687,7 +828,9 @@
       <!-- Sparrow -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/sparrow.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Chim sẻ" data-scientific-name="Passeridae"
+            data-type="Động vật có xương sống" data-diet="Hạt, côn trùng nhỏ" data-habitat="Rừng, đồng ruộng, thành phố"
+            data-location="Toàn cầu" data-size="12-18 cm" data-weight="0.02-0.04 kg" data-img="images/fly/sparrow.png">
             <img src="images/fly/sparrow.png" class="card-img-top" alt="Sparrow">
             <div class="card-body text-center">
               <p class="card-text">🐦 Chim sẻ (Sparrow)</p>
@@ -699,7 +842,9 @@
       <!-- Bee -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/bee.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Ong mật" data-scientific-name="Apis mellifera" data-type="Côn trùng"
+            data-diet="Mật hoa" data-habitat="Vườn, rừng" data-location="Toàn cầu" data-size="1-2 cm"
+            data-weight="0.0001-0.0002 kg" data-img="images/fly/bee.png">
             <img src="images/fly/bee.png" class="card-img-top" alt="Bee">
             <div class="card-body text-center">
               <p class="card-text">🐝 Ong mật (Bee)</p>
@@ -711,7 +856,9 @@
       <!-- Butterfly -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/butterfly.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Bướm" data-scientific-name="Lepidoptera" data-type="Côn trùng"
+            data-diet="Mật hoa" data-habitat="Rừng, vườn" data-location="Toàn cầu" data-size="2-30 cm"
+            data-weight="0.0001-0.01 kg" data-img="images/fly/butterfly.png">
             <img src="images/fly/butterfly.png" class="card-img-top" alt="Butterfly">
             <div class="card-body text-center">
               <p class="card-text">🦋 Bướm (Butterfly)</p>
@@ -723,7 +870,9 @@
       <!-- Dragonfly -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/dragonfly.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Chuồn chuồn" data-scientific-name="Anisoptera" data-type="Côn trùng"
+            data-diet="Côn trùng nhỏ" data-habitat="Hồ, ao, đồng cỏ" data-location="Toàn cầu" data-size="3-12 cm"
+            data-weight="0.0001-0.001 kg" data-img="images/fly/dragonfly.png">
             <img src="images/fly/dragonfly.png" class="card-img-top" alt="Dragonfly">
             <div class="card-body text-center">
               <p class="card-text">🐉 Chuồn chuồn (Dragonfly)</p>
@@ -735,7 +884,9 @@
       <!-- Stork -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/stork.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Cò" data-scientific-name="Ciconiidae"
+            data-type="Động vật có xương sống" data-diet="Cá, côn trùng" data-habitat="Đầm lầy, sông, hồ"
+            data-location="Toàn cầu" data-size="1-1.5 m" data-weight="2-4 kg" data-img="images/fly/stork.png">
             <img src="images/fly/stork.png" class="card-img-top" alt="Stork">
             <div class="card-body text-center">
               <p class="card-text">🪶 Cò (Stork)</p>
@@ -747,7 +898,9 @@
       <!-- Seagull -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/seagull.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Hải âu" data-scientific-name="Laridae"
+            data-type="Động vật có xương sống" data-diet="Cá, hải sản" data-habitat="Bờ biển, đại dương"
+            data-location="Toàn cầu" data-size="40-70 cm" data-weight="0.3-1.5 kg" data-img="images/fly/seagull.png">
             <img src="images/fly/seagull.png" class="card-img-top" alt="Seagull">
             <div class="card-body text-center">
               <p class="card-text">🌊 Hải âu (Seagull)</p>
@@ -759,7 +912,9 @@
       <!-- Bat -->
       <div class="col-6 col-md-3 col-lg-2">
         <a href="card/bat.html" class="text-decoration-none">
-          <div class="card h-100">
+          <div class="card h-100" data-common-name="Dơi" data-scientific-name="Chiroptera"
+            data-type="Động vật có xương sống" data-diet="Côn trùng, trái cây" data-habitat="Hang, rừng"
+            data-location="Toàn cầu" data-size="4-17 cm" data-weight="0.01-1.5 kg" data-img="images/fly/bat.png">
             <img src="images/fly/bat.png" class="card-img-top" alt="Bat">
             <div class="card-body text-center">
               <p class="card-text">🦇 Dơi (Bat)</p>
@@ -768,8 +923,19 @@
         </a>
       </div>
 
+
     </div>
   </div>
+  <!-- This shit for hover modal -->
+  <script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    popoverTriggerList.forEach(popoverTriggerEl => {
+      new bootstrap.Popover(popoverTriggerEl, {
+        placement: 'top', // can also be bottom, left, right
+        trigger: 'hover', // shows on hover
+      });
+    });
+  </script>
 
 
   <!-- Footer -->
@@ -811,6 +977,95 @@
       });
     });
   </script>
+  <div id="hoverCard" style="
+  position: absolute;
+  display: none;
+  background: #ffffff;
+  border: 2px solid #2e7d32;
+  border-radius: 16px;
+  width: 300px;
+  max-width: 90%;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  font-family: 'Quicksand', sans-serif;
+  padding: 1rem;
+">
+    <div class="hoverCardContent">
+      <h5 id="hoverTitle" style="margin-bottom: 0.5rem;"></h5>
+      <dl style="margin:0;">
+        <div>
+          <dt>Tên phổ biến:</dt>
+          <dd id="hoverCommonName"></dd>
+        </div>
+        <div>
+          <dt>Tên khoa học:</dt>
+          <dd id="hoverScientificName" style="font-style: italic;"></dd>
+        </div>
+        <div>
+          <dt>Loại:</dt>
+          <dd id="hoverType"></dd>
+        </div>
+        <div>
+          <dt>Chế độ ăn:</dt>
+          <dd id="hoverDiet"></dd>
+        </div>
+        <div>
+          <dt>Môi trường sống:</dt>
+          <dd id="hoverHabitat"></dd>
+        </div>
+        <div>
+          <dt>Khu vực địa lý:</dt>
+          <dd id="hoverLocation"></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  <script>
+    const hoverCard = document.getElementById('hoverCard');
+    const hoverTitle = document.getElementById('hoverTitle');
+    const hoverCommonName = document.getElementById('hoverCommonName');
+    const hoverScientificName = document.getElementById('hoverScientificName');
+    const hoverType = document.getElementById('hoverType');
+    const hoverDiet = document.getElementById('hoverDiet');
+    const hoverHabitat = document.getElementById('hoverHabitat');
+    const hoverLocation = document.getElementById('hoverLocation');
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', e => {
+        const data = card.dataset;
+
+        hoverTitle.textContent = card.querySelector('.card-text').textContent;
+        hoverCommonName.textContent = data.commonName || '-';
+        hoverScientificName.textContent = data.scientificName || '-';
+        hoverType.textContent = data.type || '-';
+        hoverDiet.textContent = data.diet || '-';
+        hoverHabitat.textContent = data.habitat || '-';
+        hoverLocation.textContent = data.location || '-';
+
+        hoverCard.style.display = 'block';
+      });
+
+      card.addEventListener('mousemove', e => {
+        const cardWidth = hoverCard.offsetWidth;
+        const cardHeight = hoverCard.offsetHeight;
+        let left = e.pageX + 15;
+        let top = e.pageY + 15;
+
+        if (left + cardWidth > window.innerWidth) left = e.pageX - cardWidth - 15;
+        if (top + cardHeight > window.innerHeight) top = e.pageY - cardHeight - 15;
+
+        hoverCard.style.top = top + 'px';
+        hoverCard.style.left = left + 'px';
+      });
+
+
+      card.addEventListener('mouseleave', () => {
+        hoverCard.style.display = 'none';
+      });
+    });
+
+  </script>
+
 </body>
 
 </html>
